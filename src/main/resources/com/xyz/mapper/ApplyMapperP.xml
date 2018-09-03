@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyz.mapper.ApplyMapperP">
+  <resultMap id="BaseResultMap" type="com.xyz.domain.Apply">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="is_blogger" jdbcType="TINYINT" property="isBlogger" />
+    <result column="aid" jdbcType="BIGINT" property="aid" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xyz.domain.Apply">
+    <result column="reason" jdbcType="LONGVARCHAR" property="reason" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, is_blogger, aid, status, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    reason
+  </sql>
+  
+  
+  <resultMap id="PageResultMap" type="com.xyz.domain.Apply">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="is_blogger" jdbcType="TINYINT" property="isBlogger" />
+    <result column="aid" jdbcType="BIGINT" property="aid" />
+    <result column="reason" jdbcType="LONGVARCHAR" property="reason" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <association property="user" javaType="com.xyz.domain.User">
+    		<result column="nickname" property="nickname"/>
+   	</association>
+   	<association property="artical" javaType="com.xyz.domain.Artical">
+    		<result column="title" property="title"/>
+   	</association>
+  </resultMap>
+  
+  
+  <select id="selectPages" resultMap="PageResultMap">
+  	select
+  		a.id,
+  		a.uid,
+  		is_blogger,
+  		aid,
+  		reason,
+  		status,
+  		create_time,
+  		nickname,
+  		title
+  	from
+  		t_apply a
+  	left join
+  		t_user u
+  	on
+  		a.uid = u.id
+  	left join
+  		t_artical ar
+  	on
+  		a.aid = ar.id
+  	<where>
+  		<if test="isBlogger != null">
+  			and is_blogger = #{isBlogger}
+  		</if>
+  		<if test="status != null">
+  			and status = #{status}
+  		</if>
+  		<if test="beginTime != null">
+  			and create_time &gt; #{beginTime}
+  		</if>
+  		<if test="endTime != null">
+  			and create_time &lt; #{endTime}
+  		</if>
+  	</where>
+  	order by
+  		create_time
+  	desc
+  </select>
+  
+  
+  <resultMap id="selectOneResultMap" type="com.xyz.domain.Apply">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="is_blogger" jdbcType="TINYINT" property="isBlogger" />
+    <result column="aid" jdbcType="BIGINT" property="aid" />
+    <result column="reason" jdbcType="LONGVARCHAR" property="reason" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <association property="user" javaType="com.xyz.domain.User">
+    		<result column="nickname" property="nickname"/>
+   	</association>
+   	<association property="artical" javaType="com.xyz.domain.Artical">
+    		<result column="title" property="title"/>
+    		<result column="content" property="content"/>
+    		<collection property="categorys" ofType="com.xyz.domain.ArticalCategory">
+   				<result column="name" property="name"/>
+   			</collection>
+   	</association>
+  </resultMap>
+  
+  <select id="selectOne1" resultMap="selectOneResultMap">
+  	select
+  		a.id,
+  		a.uid,
+  		is_blogger,
+  		a.aid,
+  		reason,
+  		status,
+  		a.create_time,
+  		nickname,
+  		title,
+  		content,
+  		name
+  	from
+  		t_apply a
+  	left join
+  		t_user u
+  	on
+  		a.uid = u.id
+  	left join
+  		t_artical ar
+  	on
+  		a.aid = ar.id
+  	left join
+  		t_artical_associate_category aac
+  	on
+  		ar.id = aac.aid
+  	left join
+  		t_artical_category ac
+  	on
+  		aac.cid = ac.id
+  	where
+  		a.id = #{id}
+  </select>
+  
+</mapper>

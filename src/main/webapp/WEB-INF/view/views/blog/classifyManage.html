@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title></title>
+
+		<!-- 所有该框架写的页面均包含的CSS文件 -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- paging -->
+		<link href="page/paging.css" rel="stylesheet">
+
+		<!-- 本页面所属css -->
+		<link rel="stylesheet" href="pcss/blog/classifyManage.css" />
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-lg-6 col-md-6">
+				<h2>博客管理</h2>
+				<ol class="breadcrumb">
+					<li>
+						<a>这是</a>
+					</li>
+					<li class="active">
+						<strong>分类管理</strong>
+					</li>
+				</ol>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="title-action">
+					<a href="#" id="refresh" class="btn btn-primary fa fa-refresh right"></a>
+				</div>
+			</div>
+		</div>
+
+		<br />
+
+		<!-- 博客分类 -->
+		<div class="col-sm-12">
+			<div class="ibox ">
+				<div class="ibox-title">
+					<h5>博客分类</h5>
+				</div>
+				<div class="ibox-content">
+					<div class="dd" id="nestable2">
+						<ol class="dd-list" id="categorys">
+							<!-- <li class="dd-item" data-id="1" data-level="first">
+								<div class="dd-handle">
+									<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+									<span>一级菜单一</span>
+								</div>
+								<ol class="dd-list">
+									<li class="dd-item" data-id="2">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单一</span>
+										</div>
+									</li>
+									<li class="dd-item" data-id="3">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单二</span>
+										</div>
+									</li>
+									<li class="dd-item" data-id="4">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单三</span>
+										</div>
+									</li>
+								</ol>
+							</li>
+
+							<li class="dd-item" data-id="5" data-level="first">
+								<div class="dd-handle">
+									<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+									<span>一级菜单二</span>
+								</div>
+								<ol class="dd-list">
+									<li class="dd-item" data-id="6">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单四</span>
+										</div>
+									</li>
+									<li class="dd-item" data-id="7">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单五</span>
+										</div>
+									</li>
+									<li class="dd-item" data-id="8">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>二级菜单六</span>
+										</div>
+									</li>
+								</ol>
+							</li> -->
+						</ol>
+					</div>
+				</div>
+
+				<div>
+					<button class="btn btn-primary" data-toggle="modal" href="#" id="add">添加</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal-form-change" class="modal fade" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!--标题-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">修改窗口</h4>
+					</div>
+					<!--主体-->
+					<div class="modal-body">
+						<div class="row">
+							<table>
+								<colgroup>
+									<col width="20%" />
+								</colgroup>
+								<thead>
+
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<label class="control-label">分类编号：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="cid"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">分类名称：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="cname"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">父类：</label>
+										</td>
+										<td>
+											<span hidden="">1</span>
+											<p class="form-control-static" id="cpname"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">名称变更：</label>
+										</td>
+										<td>
+											<input class="form-control pin" type="text" placeholder="请输入名称" id="cNewname" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--脚注 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="change_submit">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal-form-save" class="modal fade" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!--标题-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">添加窗口</h4>
+					</div>
+					<!--主体-->
+					<div class="modal-body">
+						<div class="row">
+							<table>
+								<colgroup>
+									<col width="20%" />
+								</colgroup>
+								<thead>
+
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<label class="control-label">请选择父类：</label>
+										</td>
+										<td>
+											<select class="form-control pse" name="pcategory" id="pcategory">
+												<option value="0">无父类</option>
+												<!-- <option value="1">IT</option>
+												<option value="2">生活</option>
+												<option value="3">历史</option> -->
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">类名：</label>
+										</td>
+										<td>
+											<input class="form-control pin" type="text" placeholder="请输入名称" id="aNewname" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--脚注 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="save_submit">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/layer/layer.min.js"></script>
+
+		<!-- 自定义js -->
+		<script src="js/hplus.js?v=4.1.0"></script>
+		<script type="text/javascript" src="js/contabs.js"></script>
+
+		<!-- 第三方插件 -->
+		<!-- 头部刷新条 -->
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+		<!-- paging -->
+		<script type="text/javascript" src="page/query.js"></script>
+		<script type="text/javascript" src="page/paging.js"></script>
+
+		<!-- tmpl -->
+		<script type="text/javascript" src="scripts/jquery.tmpl.js"></script>
+
+		<!-- 公共js-分页逻辑 -->
+		<script type="text/javascript" src="scripts/public.js"></script>
+
+		<!-- Nestable List -->
+		<script src="js/plugins/nestable/jquery.nestable.js"></script>
+
+		<script type="text/x-jquery-tmpl" id="t1">
+							<li class="dd-item" data-id="${id}" data-level="first">
+								<div class="dd-handle">
+									<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+									<span>${name}</span>
+								</div>
+								<ol class="dd-list">
+								{{each(i,e) categorys}}
+									<li class="dd-item" data-id="${e.id}">
+										<div class="dd-handle">
+											<a class="pull-right change" data-toggle="modal" href="#"> 修改 </a>
+											<span>${e.name}</span>
+										</div>
+									</li>
+								{{/each}}
+								</ol>
+							</li>
+		</script>
+		<script type="text/x-jquery-tmpl" id="t2">
+				<option value="${id}">${name}</option>
+		</script>
+
+		<!-- 本页面所属js -->
+		<script type="text/javascript" src="pjs/blog/classifyManage.js"></script>
+
+	</body>
+
+</html>

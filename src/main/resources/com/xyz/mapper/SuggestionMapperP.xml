@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyz.mapper.SuggestionMapperP">
+  <resultMap id="BaseResultMap" type="com.xyz.domain.Suggestion">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="leave_time" jdbcType="TIMESTAMP" property="leaveTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xyz.domain.Suggestion">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, status, leave_time
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  
+  <resultMap id="PageResultMap" type="com.xyz.domain.Suggestion">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="leave_time" jdbcType="TIMESTAMP" property="leaveTime" />
+  	<association property="user" javaType="com.xyz.domain.User">
+    		<result column="nickname" property="nickname"/>
+   	</association>
+  </resultMap>
+  
+  <select id="selectPages" resultMap="PageResultMap">
+  	select
+  		s.id,
+  		uid,
+  		content,
+  		status,
+  		leave_time,
+  		nickname
+  	from
+  		t_suggestion s
+  	left join
+  		t_user u
+  	on
+  		s.uid = u.id
+  	<where>
+  		<if test="status != null">
+  			and status = #{status}
+  		</if>
+  		<if test="beginTime != null">
+  			and leave_time &gt; #{beginTime}
+  		</if>
+  		<if test="endTime != null">
+  			and leave_time &lt; #{endTime}
+  		</if>
+  	</where>
+  	order by
+  		leave_time
+  	desc
+  </select>
+  
+</mapper>

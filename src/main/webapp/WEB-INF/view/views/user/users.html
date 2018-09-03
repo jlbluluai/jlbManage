@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title>用户列表</title>
+
+		<!-- 所有该框架写的页面均包含的CSS文件 -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- paging -->
+		<link href="page/paging.css" rel="stylesheet">
+		
+		<!-- 本页面所属css -->
+		<link rel="stylesheet" href="pcss/user/users.css" />
+	</head>
+
+	<body>
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-lg-6 col-md-6">
+				<h2>用户管理</h2>
+				<ol class="breadcrumb">
+					<li>
+						<a>这是</a>
+					</li>
+					<li class="active">
+						<strong>基本管理</strong>
+					</li>
+					<li class="active">
+						<strong>用户列表</strong>
+					</li>
+				</ol>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="title-action">
+					<a href="#" id="refresh" class="btn btn-primary fa fa-refresh right"></a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row wrapper-content">
+			<div class="col-sm-6">
+				<label class="control-label">注册时间</label>
+				<input type="date" class="form-control pin" id="beginTime" />
+				<label class="control-label">至</label>
+				<input type="date" class="form-control pin" id="endTime" />
+			</div>
+			
+			<div class="col-sm-6">
+				<label class="control-label">用户编号</label>
+				<input type="text" class="form-control pin" id="userId" />
+			</div>
+			
+			<div class="newLine col-sm-12"></div>
+			
+			<div class="col-sm-4">
+				<label class="control-label">用户名</label>
+				<input type="text" class="form-control pin" id="userName" />
+			</div>
+			
+			<div class="col-sm-4">
+				<label class="control-label">昵称</label>
+				<input type="text" class="form-control pin" id="nickName" />
+			</div>
+			
+			<div class="col-sm-4">
+				<label class="control-label">邮箱</label>
+				<input type="email" class="form-control pin" id="eMail" />
+			</div>
+
+			<div class="newLine col-sm-12"></div>
+
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-primary" id="query">查询</button>
+			</div>
+		</div>
+		
+		<div class="row wrapper-content">
+			<div class="col-lg-12">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>用户编号</th>
+							<th>用户名</th>
+							<th>昵称</th>
+							<th>邮箱</th>
+							<th>注册时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="users">
+						<!-- <tr>
+							<td>20171209567055</td>
+							<td>luluai</td>
+							<td>秋风扫落叶</td>
+							<td>123@qq.com</td>
+							<td>2018-01-09 00:00:00</td>
+							<td>
+								<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+				<div id="pageToolbar"></div>
+			</div>
+		</div>
+		
+		
+		<div id="modal-form-examine" class="modal fade" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!--标题-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">查看窗口</h4>
+					</div>
+					<!--主体-->
+					<div class="modal-body">
+						<div class="row">
+							<table>
+								<colgroup>
+									<col width="20%" />
+								</colgroup>
+								<thead>
+
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<label class="control-label">用户编号：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="userid"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">用户名：</label>
+										</td>
+										<td>
+											<span hidden="">1</span>
+											<p class="form-control-static" id="username"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">昵称：</label>
+										</td>
+										<td>
+											<span hidden="">1</span>
+											<p class="form-control-static" id="nickname"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">邮箱：</label>
+										</td>
+										<td>
+											<span hidden="">1</span>
+											<p class="form-control-static" id="email"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">注册时间：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="makeday"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">姓名：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="truename"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">性别：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="sex"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">出生日期：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="birthday"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">公司/学校：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="address"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">qq：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="qq"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">描述：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="description"></p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--脚注 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="examine_close">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/layer/layer.min.js"></script>
+
+		<!-- 自定义js -->
+		<script src="js/hplus.js?v=4.1.0"></script>
+		<script type="text/javascript" src="js/contabs.js"></script>
+
+		<!-- 第三方插件 -->
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+		<!-- paging -->
+		<script type="text/javascript" src="page/query.js"></script>
+		<script type="text/javascript" src="page/paging.js"></script>
+
+		<!-- tmpl -->
+		<script type="text/javascript" src="scripts/jquery.tmpl.js"></script>
+
+		<!-- 公共js-分页逻辑 -->
+		<script type="text/javascript" src="scripts/public.js"></script>
+		
+		<script type="text/x-jquery-tmpl" id="t1">
+						<tr>
+							<td>${id}</td>
+							<td>${username}</td>
+							<td>${nickname}</td>
+							<td>${email}</td>
+							<td>${dateFormat(makeDay)}</td>
+							<td>
+								<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+							</td>
+						</tr>
+		</script>
+		
+		<!-- 本页面所属js -->
+		<script type="text/javascript" src="pjs/user/users.js"></script>
+
+	</body>
+
+</html>

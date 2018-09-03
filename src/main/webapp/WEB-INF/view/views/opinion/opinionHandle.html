@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title>意见处理</title>
+
+		<!-- 所有该框架写的页面均包含的CSS文件 -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- paging -->
+		<link href="page/paging.css" rel="stylesheet">
+
+		<!-- 本页面所属css -->
+		<link href="pcss/opinion/opinionHandle.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-lg-6 col-md-6">
+				<h2>意见管理</h2>
+				<ol class="breadcrumb">
+					<li>
+						<a>这是</a>
+					</li>
+					<li class="active">
+						<strong>意见处理</strong>
+					</li>
+				</ol>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="title-action">
+					<a href="#" id="refresh" class="btn btn-primary fa fa-refresh right"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row wrapper-content">
+			<div class="col-sm-4">
+				<label class="control-label">状态</label>
+				<select class="form-control pse" name="queryStatus">
+					<option value="100">全部</option>
+					<option value="0">未审批</option>
+					<option value="1">已批准</option>
+					<option value="2">已驳回</option>
+				</select>
+			</div>
+			<div class="col-sm-6">
+				<label class="control-label">建议时间</label>
+				<input type="date" class="form-control pin" id="beginTime" />
+				<label class="control-label">至</label>
+				<input type="date" class="form-control pin" id="endTime" />
+			</div>
+
+			<div class="newLine col-sm-12"></div>
+
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-primary" id="query">查询</button>
+			</div>
+		</div>
+
+		<div class="row wrapper-content">
+			<div class="col-lg-12">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>建议编号</th>
+							<th>建议人</th>
+							<th>建议时间</th>
+							<th>建议内容</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="suggestions">
+						<!-- <tr>
+							<td>20171209567055</td>
+							<td>秋风扫落叶</td>
+							<td>2018-01-09 00:00</td>
+							<td>我很想当博主，因为我很热爱发博...</td>
+							<td class="hidden">我很想当博主，因为我很热爱发博...（完整）</td>
+							<td>
+								<a data-toggle="modal" class="btn btn-warning approve" href="#">审批</a>
+							</td>
+						</tr>
+						<tr>
+							<td>20171209567025</td>
+							<td>春风吹草生</td>
+							<td>2018-01-07 00:00</td>
+							<td>我觉得贵平台是个很不错的平台...</td>
+							<td class="hidden">我觉得贵平台是个很不错的平台...（完整）</td>
+							<td>
+								<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+								<i class="fa fa-check text-success"></i> <span>已批准</span>
+							</td>
+						</tr>
+						<tr>
+							<td>20171209567015</td>
+							<td>冬虫夏草君</td>
+							<td>2018-01-06 00:00</td>
+							<td>我觉得贵平台是个很不错的平台...</td>
+							<td class="hidden">我觉得贵平台是个很不错的平台...（完整）</td>
+							<td>
+								<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+								<i class="fa fa-close text-danger"></i> <span>已驳回</span>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+				<div id="pageToolbar"></div>
+			</div>
+		</div>
+
+		<div id="modal-form-approve" class="modal fade" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!--标题-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">审批窗口</h4>
+					</div>
+					<!--主体-->
+					<div class="modal-body">
+						<div class="row">
+							<table>
+								<colgroup>
+									<col width="20%" />
+								</colgroup>
+								<thead>
+
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<label class="control-label">建议编号：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="appId"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议人：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="appUsername"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议时间：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="appTime"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议内容：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="appContent"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">审批：</label>
+										</td>
+										<td>
+											<div style="margin-top: 6px;">
+												<label class="radio-inline">
+               									<input type="radio" checked="" value="1" id="auditRadios1" name="auditRadios">批准</label>
+												<label class="radio-inline">
+                								<input type="radio" value="2" id="auditRadios2" name="auditRadios">驳回</label>
+											</div>
+										</td>
+									</tr>
+									<!--<tr id="rejecReason">
+										<td>
+											<label class="control-label">驳回理由：</label>
+										</td>
+										<td>
+											<textarea id="rese" class="form-control"></textarea>
+										</td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--脚注 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="audit_close">关闭</button>
+						<button type="button" class="btn btn-primary" id="audit_submit">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal-form-examine" class="modal fade" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!--标题-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">查看窗口</h4>
+					</div>
+					<!--主体-->
+					<div class="modal-body">
+						<div class="row">
+							<table>
+								<colgroup>
+									<col width="20%" />
+								</colgroup>
+								<thead>
+
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<label class="control-label">建议编号：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="exaId"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议人：</label>
+										</td>
+										<td>
+											<span hidden="">1</span>
+											<p class="form-control-static" id="exaUsername"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议时间：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="exaTime"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">建议内容：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="exaContent"></p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="control-label">状态：</label>
+										</td>
+										<td>
+											<p class="form-control-static" id="exaStatus"></p>
+										</td>
+									</tr>
+									<!--<tr>
+										<td>
+											<label class="control-label">审批人：</label>
+										</td>
+										<td>
+											<p class="form-control-static">小叶子</p>
+										</td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--脚注 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="examine_close">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/layer/layer.min.js"></script>
+
+		<!-- 自定义js -->
+		<script src="js/hplus.js?v=4.1.0"></script>
+		<script type="text/javascript" src="js/contabs.js"></script>
+
+		<!-- 第三方插件 -->
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+		<!-- paging -->
+		<script type="text/javascript" src="page/query.js"></script>
+		<script type="text/javascript" src="page/paging.js"></script>
+
+		<!-- tmpl -->
+		<script type="text/javascript" src="scripts/jquery.tmpl.js"></script>
+
+		<!-- 公共js-分页逻辑 -->
+		<script type="text/javascript" src="scripts/public.js"></script>
+
+		<script type="text/x-jquery-tmpl" id="t1">
+						<tr>
+							<td>${id}</td>
+							<td>${user.nickname}</td>
+							<td>${dateFormat(leaveTime)}</td>
+							<td>${content_cut}</td>
+							<td class="hidden">${content}</td>
+							{{if status == 0}}
+								<td>
+									<a data-toggle="modal" class="btn btn-warning approve" href="#">审批</a>
+								</td>
+							{{/if}}
+							{{if status == 1}}
+								<td>
+									<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+									<i class="fa fa-check text-success"></i> <span>已批准</span>
+								</td>
+							{{/if}}
+							{{if status == 2}}
+								<td>
+									<a data-toggle="modal" class="btn btn-success examine" href="#">查看</a>
+									<i class="fa fa-close text-danger"></i> <span>已驳回</span>
+								</td>
+							{{/if}}
+						</tr>
+		</script>
+
+		<!-- 本页面所属js -->
+		<script type="text/javascript" src="pjs/opinion/opinionHandle.js"></script>
+	</body>
+
+</html>

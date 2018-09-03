@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<title></title>
+
+		<!-- 所有该框架写的页面均包含的CSS文件 -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- paging -->
+		<link href="page/paging.css" rel="stylesheet">
+
+		<!-- 本页面所属css -->
+		<link href="pcss/frontMaintain/pubboard.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-lg-6 col-md-6">
+				<h2>前台维护</h2>
+				<ol class="breadcrumb">
+					<li>
+						<a>这是</a>
+					</li>
+					<li class="active">
+						<strong>登录公板</strong>
+					</li>
+				</ol>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="title-action">
+					<a href="#" id="refresh" class="btn btn-primary fa fa-refresh right"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row wrapper-content">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>当前公板内容</h5>
+					</div>
+					<div class="ibox-content">
+						<label class="form-label pla">标题：</label>
+						<div>
+							<p class="form-control-static" id="show_title"><!-- yiersan --></p>
+						</div>
+						<label class="form-label">内容：</label>
+						<div>
+							<p class="form-control-static" id="show_content">
+								<!-- 伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨
+								伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨伊尔萨 -->
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row wrapper-content">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>发布新内容</h5>
+					</div>
+					<div class="ibox-content">
+						<div class="col-sm-6 col-sm-push-1">
+							<label>标题</label>
+							<input type="text" class="form-control" name="title" />
+						</div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<div class="col-sm-9 col-sm-push-1">
+							<label>内容</label>
+							<textarea class="form-control" rows="5" name="content"></textarea>
+						</div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<div class="col-sm-6 col-sm-push-1">
+							<button class="btn btn-primary">提交</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/layer/layer.min.js"></script>
+
+		<!-- 自定义js -->
+		<script src="js/hplus.js?v=4.1.0"></script>
+		<script type="text/javascript" src="js/contabs.js"></script>
+
+		<!-- 第三方插件 -->
+		<!-- 头部刷新条 -->
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+		<!-- paging -->
+		<script type="text/javascript" src="page/query.js"></script>
+		<script type="text/javascript" src="page/paging.js"></script>
+
+		<!-- tmpl -->
+		<script type="text/javascript" src="scripts/jquery.tmpl.js"></script>
+
+		<!-- 公共js-分页逻辑 -->
+		<script type="text/javascript" src="scripts/public.js"></script>
+
+		<!-- 本页面所属js -->
+		<script type="text/javascript" src="pjs/frontMaintain/pubboard.js"></script>
+
+	</body>
+
+</html>

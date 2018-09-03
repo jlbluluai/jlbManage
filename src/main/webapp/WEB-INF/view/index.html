@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>主页</title>
+
+		<!-- CSS文件 -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- 本页面所属css -->
+		<link href="pcss/index.css" rel="stylesheet">
+		
+		<!-- logo -->
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+	</head>
+
+	<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+		<div id="wrapper">
+			<!--左侧导航开始-->
+			<nav class="navbar-default navbar-static-side" role="navigation">
+				<div class="nav-close"><i class="fa fa-times-circle"></i>
+				</div>
+				<div class="sidebar-collapse">
+					<ul class="nav" id="side-menu">
+						<li style="font-size: 17px;">
+							林区
+						</li>
+						<li class="nav-header" >
+							<div class="dropdown profile-element" style="margin-left: 40px;">
+								<span><img alt="image" class="img-circle" src="" id="headpic"/></span>
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold" id="nickname"></strong></span>
+									<span class="text-muted text-xs block">管理员<b class="caret"></b></span>
+									</span>
+								</a>
+								<ul class="dropdown-menu animated fadeInRight m-t-xs">
+									<li>
+										<a class="J_menuItem" href="headpicChange">修改头像</a>
+									</li>
+									<li>
+										<a class="J_menuItem" href="personal">个人资料</a>
+									</li>
+									<!--<li>
+										<a class="J_menuItem" href="mailbox">信箱</a>
+									</li>-->
+									<li class="divider"></li>
+									<li>
+										<a href="#" class="logout">安全退出</a>
+									</li>
+								</ul>
+							</div>
+							<div class="logo-element" style="margin-left: -40px;">林</div>
+						</li>
+						<li>
+							<a class="J_menuItem" href="main" data-index="0">
+								<i class="fa fa-home"></i>
+								<span class="nav-label">主页</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-male"></i>
+								<span class="nav-label">&nbsp;用户管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a href="#">
+										<span class="nav-label">基本管理</span>
+										<span class="fa arrow"></span>
+									</a>
+									<ul class="nav nav-second-level">
+										<li class="retract">
+											<a class="J_menuItem" href="users">用户列表</a>
+										</li>
+										<li class="retract">
+											<a class="J_menuItem" href="passRecord">密码修改备案</a>
+										</li>
+									</ul>
+
+								</li>
+								<li>
+									<a href="#">
+										<span class="nav-label">博主管理</span>
+										<span class="fa arrow"></span>
+									</a>
+									<ul class="nav nav-second-level">
+										<li class="retract">
+											<a class="J_menuItem" href="bloggerApply">博主申请</a>
+										</li>
+										<!-- <li class="retract">
+											<a class="J_menuItem" href="bloggerSta">博主统计</a>
+										</li> -->
+									</ul>
+								</li>
+								<!-- <li>
+									<a class="J_menuItem" href="">管理员管理</a>
+								</li> -->
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-book"></i>
+								<span class="nav-label">博客管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="blogApply">博客申精</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="classifyManage">分类管理</a>
+								</li>
+								<!-- <li>
+									<a class="J_menuItem" href="blogSta">博客统计</a>
+								</li> -->
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-bell"></i>
+								<span class="nav-label">意见管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="opinionHandle">意见处理</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-send"></i>
+								<span class="nav-label">消息管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="pubMessage">公告发放</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-desktop"></i>
+								<span class="nav-label">前台维护</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="pubboard">登录公板</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="versionManage">版本信息</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="recommendManage">门户推荐</a>
+								</li>
+							</ul>
+						</li>
+						<!-- <li>
+							<a href="#">
+								<i class="fa fa-cog"></i>
+								<span class="nav-label">基本数据管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="">数据备份</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="">全面crud</a>
+								</li>
+							</ul>
+						</li> -->
+					</ul>
+				</div>
+			</nav>
+			<!--左侧导航结束-->
+			<!--右侧部分开始-->
+			<div id="page-wrapper" class="gray-bg dashbard-1">
+				<div class="row border-bottom">
+					<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+						<div class="navbar-header">
+							<a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-hand-o-left"></i> </a>
+						</div>
+
+						<ul class="nav navbar-top-links navbar-right">
+							<!-- <li class="dropdown">
+								<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+									<i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+								</a>
+								<ul class="dropdown-menu dropdown-messages">
+									<li class="m-t-xs">
+										<div class="dropdown-messages-box">
+											<a href="profile" class="pull-left">
+												<img alt="image" class="img-circle" src="img/a7.jpg" tppabs="http://www.zi-han.net/theme/hplus/img/a7.jpg">
+											</a>
+											<div class="media-body">
+												<small class="pull-right">46小时前</small>
+												<strong>小四</strong> 这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？
+												<br>
+												<small class="text-muted">3天前 2014.11.8</small>
+											</div>
+										</div>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<div class="text-center link-block">
+											<a class="J_menuItem" href="mailbox">
+												<i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</li> -->
+							<li class="dropdown hidden-xs">
+								<img src="img/林区.png" height="50" />
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="row content-tabs">
+					<button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+					<nav class="page-tabs J_menuTabs">
+						<div class="page-tabs-content">
+							<a href="javascript:;" class="active J_menuTab" data-id="main">首页</a>
+						</div>
+					</nav>
+					<button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+					<div class="btn-group roll-nav roll-right">
+						<button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                    </button>
+						<ul role="menu" class="dropdown-menu dropdown-menu-right">
+							<li class="J_tabShowActive">
+								<a>定位当前选项卡</a>
+							</li>
+							<li class="divider"></li>
+							<li class="J_tabCloseAll">
+								<a>关闭全部选项卡</a>
+							</li>
+							<li class="J_tabCloseOther">
+								<a>关闭其他选项卡</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#" class="roll-nav roll-right J_tabExit logout"><i class="fa fa fa-sign-out"></i> 退出</a>
+				</div>
+				<div class="row J_mainContent" id="content-main">
+					<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="main" frameborder="0" data-id="main" seamless></iframe>
+				</div>
+				<div class="footer">
+					<div class="pull-right">&copy; 2017-2018 小叶子
+					</div>
+				</div>
+			</div>
+			<!--右侧部分结束-->
+			<!--右侧边栏开始-->
+			<!--右侧边栏结束-->
+		</div>
+
+		<!-- 全局js -->
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/layer/layer.min.js"></script>
+
+		<!-- 自定义js -->
+		<script src="js/hplus.js?v=4.1.0"></script>
+		<script type="text/javascript" src="js/contabs.js"></script>
+
+		<!-- 第三方插件 -->
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+		<script type="text/javascript">
+			$(".logout").click(function() {
+
+				//询问框
+				parent.layer.confirm('确认本次的退出？', {
+					btn: ['确认', '再过会'], //按钮
+					shade: false //不显示遮罩
+				}, function() {
+					window.location.href = "login";
+				}, function() {
+					parent.layer.msg('么么哒', {
+						icon: 1
+					});
+				});
+
+			});
+			
+			/*获取头像*/
+			$(function(){
+				$.ajax({
+					type : "get",
+					url : "getHeadPic",
+					dataType : "json",
+					data :{
+					},
+					async : true,
+					success : function(data) {
+						console.log(data);
+						$("#headpic").attr("src" ,data.str[0]);
+						$("#nickname").text(data.str[1]);
+					},
+					error : function() {
+						alert("数据获取失败");
+					}
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
